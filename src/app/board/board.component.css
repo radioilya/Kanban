@@ -1,0 +1,7 @@
+.board {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 20px;
+  background-color: #edfff1;
+  min-height: 300px;
+}

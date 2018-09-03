@@ -1,0 +1,27 @@
+<div class="name__stage">
+  {{stage.name}}
+
+</div>
+
+  <div class="stage">
+<div *ngFor="let task of stage.tasks">
+  <app-task [moveEnabled]="moveEnabled"  [backEnabled]="backEnabled" (moveTask)="onTaskMoved($event)"  (downTask)="offMoveTask($event)" [task]="task"></app-task>
+</div>
+
+</div>
+<div>
+<form (submit)='createTask()'>
+  <p>
+    <label title="Название задачи">Новая Задача:
+     <input [formControl]="taskName">
+</label>
+    <label title="Описание">Описание:
+      <input [formControl]="taskDescription">
+    </label>
+  </p>
+
+<p>
+<button type="submit">Создать</button>
+</p>
+</form>
+</div>

@@ -1,0 +1,13 @@
+.task{
+  font-size: 10pt;
+  border: 0px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-weight: normal;
+  border-radius: 10px 10px 10px 10px;
+  width: auto;
+  background: bisque;
+  height: 100px;
+  margin-top: 10px;
+  max-width: 342px;
+}
