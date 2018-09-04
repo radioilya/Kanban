@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Stage, Stages} from '../stage';
 import {Task} from '../task';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-board',
@@ -10,13 +11,17 @@ import {Task} from '../task';
 export class BoardComponent implements OnInit {
 
   stages: Stage[] = Stages;
-
   constructor() {
+
   }
 
   ngOnInit() {
-  }
 
+  }
+  downTask($event: Task){
+
+    this.stages[$event.parent_id].tasks.push($event);
+  }
   onMoveTask($event: Task, i: number) {
     this.stages[i + 1].tasks.push($event);
   }

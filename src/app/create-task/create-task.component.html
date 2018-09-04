@@ -1,0 +1,34 @@
+<div class="form">
+<form (submit)='createTask()'>
+  <p>
+    <label title="Стадии">Стадии:
+      <select [formControl]="taskParent_id">
+      <option *ngFor="let stage of stages;" value="{{stage.id}}">{{stage.name}}</option>
+    </select>
+    </label>
+  </p>
+  <label title="Приоритет">Приоритет:
+  <select [formControl]="taskPriority">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4" selected="selected">4</option>
+  </select>
+  </label>
+
+  <p>
+    <label title="Название задачи">Новая Задача:
+      <input [formControl]="taskName">
+    </label>
+  </p>
+  <p>
+    <label title="Описание">Описание:
+      <textarea [formControl]="taskDescription"></textarea>
+    </label>
+  </p>
+
+  <p>
+    <button type="submit">Создать</button>
+  </p>
+</form>
+</div>

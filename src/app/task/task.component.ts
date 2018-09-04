@@ -25,8 +25,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
-
-  }
+   }
 
   moveAhead() {
     this.moveTask.emit(this.task);
