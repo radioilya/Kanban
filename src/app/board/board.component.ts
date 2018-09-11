@@ -18,7 +18,7 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
 
   }
-  downTask($event: Task){
+  newTask($event: Task) {
 
     this.stages[$event.parent_id].tasks.push($event);
   }

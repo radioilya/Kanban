@@ -17,8 +17,8 @@ export class CreateTaskComponent implements OnInit {
   constructor() {
     this.taskName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]);
     this.taskDescription = new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]);
-    this.taskPriority = new FormControl('');
-    this.taskParent_id = new FormControl('');
+    this.taskPriority = new FormControl('4');
+    this.taskParent_id = new FormControl('0');
   }
   @Output()  newTask: EventEmitter<Task> = new EventEmitter<Task>();
   ngOnInit() {

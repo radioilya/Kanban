@@ -2,7 +2,8 @@
 <form (submit)='createTask()'>
   <p>
     <label title="Стадии">Стадии:
-      <select [formControl]="taskParent_id">
+      <select [formControl]="taskParent_id" >
+
       <option *ngFor="let stage of stages;" value="{{stage.id}}">{{stage.name}}</option>
     </select>
     </label>
@@ -12,7 +13,7 @@
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
-    <option value="4" selected="selected">4</option>
+    <option value="4">4</option>
   </select>
   </label>
 
