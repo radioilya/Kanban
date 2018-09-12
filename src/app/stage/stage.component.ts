@@ -20,27 +20,15 @@ export class StageComponent implements OnInit {
   moveTask: EventEmitter<Task> = new EventEmitter<Task>();
   @Output()
   downTask: EventEmitter<Task> = new EventEmitter<Task>();
-  taskName: FormControl;
-  taskDescription: FormControl;
+
 
   constructor() {
-    this.taskName = new FormControl('', [Validators.required]);
-    this.taskDescription = new FormControl('', [Validators.required, Validators.minLength(4)]);
-  }
+    }
 
   ngOnInit() {
 
   }
 
-  createTask() {
-    if (this.taskName.valid && this.taskDescription.valid) {
-      this.stage.tasks.push(new Task(this.taskName.value, this.taskDescription.value, 1,1));
-      this.taskName.reset('');
-      this.taskDescription.reset('');
-    } else {
-      alert('Заполните поля');
-    }
-  }
 
 
   onTaskMoved($event: Task) {
