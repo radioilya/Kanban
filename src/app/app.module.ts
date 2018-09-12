@@ -7,6 +7,7 @@ import {StageComponent} from './stage/stage.component';
 import {TaskComponent} from './task/task.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreateTaskComponent } from './create-task/create-task.component';
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

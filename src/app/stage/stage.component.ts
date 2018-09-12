@@ -1,15 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {Stage} from '../stage';
-import {Task} from '../task';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Stage} from '../model/stage';
+import {Task} from '../model/task';
+import {Subject, Subscription} from 'rxjs';
+import {repeatWhen} from 'rxjs/operators';
+import {SelectTaskService} from '../select-task.service';
 
 @Component({
   selector: 'app-stage',
   templateUrl: './stage.component.html',
   styleUrls: ['./stage.component.css']
 })
-export class StageComponent implements OnInit {
-
+export class StageComponent implements OnInit, OnDestroy {
   @Input()
   stage: Stage;
   @Input()
@@ -20,16 +21,23 @@ export class StageComponent implements OnInit {
   moveTask: EventEmitter<Task> = new EventEmitter<Task>();
   @Output()
   downTask: EventEmitter<Task> = new EventEmitter<Task>();
+  getTasksByStageSubscription: Subscription;
+  refreshStage = new Subject();
 
-
-  constructor() {
-    }
-
-  ngOnInit() {
+  constructor(private service: SelectTaskService) {
 
   }
 
+  ngOnInit() {
+    this.getTasksByStageSubscription = this.service
+      .getTasksByStage(this.stage.id)
+      .pipe(repeatWhen(() => this.refreshStage))
+      .subscribe((tasks: Task[]) => this.stage.tasks = tasks);
+  }
 
+  ngOnDestroy(): void {
+    this.getTasksByStageSubscription.unsubscribe();
+  }
 
   onTaskMoved($event: Task) {
     this.stage.tasks = this.stage.tasks.filter(value => value !== $event);

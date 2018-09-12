@@ -1,5 +1,5 @@
 <div class="task">
-  Сделать: {{task.title}}, приоритет: {{task.priority}}
+  Сделать: {{task.name}}, приоритет: {{task.priority}}
   <p>{{task.description}}</p>
   <button *ngIf="moveEnabled" (click)="moveAhead()">Вперед</button>
   <button *ngIf="backEnabled"  (click)="moveBack()">Назад</button>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Stage, Stages} from '../stage';
-import {Task} from '../task';
-import {FormControl, Validators} from '@angular/forms';
+import {Stage} from '../model/stage';
+import {Task} from '../model/task';
+import {Subscription} from 'rxjs';
+import {SelectStageService} from '../select-stage.service';
 
 @Component({
   selector: 'app-board',
@@ -9,18 +10,19 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-
-  stages: Stage[] = Stages;
-  constructor() {
-
+  stages: Stage[];
+  getStagesSubscription: Subscription;
+  constructor(private service: SelectStageService) {
   }
 
   ngOnInit() {
-
+    this.getStagesSubscription = this.service
+      .getStages()
+      .subscribe((stages: Stage[]) => this.stages = stages);
   }
   newTask($event: Task) {
 
-    this.stages[$event.parent_id].tasks.push($event);
+    this.stages[$event.stageId].tasks.push($event);
   }
   onMoveTask($event: Task, i: number) {
     this.stages[i + 1].tasks.push($event);
