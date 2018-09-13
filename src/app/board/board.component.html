@@ -4,4 +4,7 @@
   <app-stage [moveEnabled]="!isLast"  [backEnabled]="!isFirst" (moveTask)="onMoveTask($event, i)" (downTask)="offMoveTask($event, i)" [stage]="stage"></app-stage>
 </div>
 </div>
+<div class="create">
 <app-create-task [stages]="stages" (newTask)="newTask($event)"></app-create-task>
+<app-create-stage ></app-create-stage>
+</div>

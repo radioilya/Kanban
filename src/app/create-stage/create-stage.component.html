@@ -1,0 +1,20 @@
+<div class="form">
+  <form (submit)='createStage()'>
+     <p>
+      <label title="Название задачи">Новая Стадия:
+        <input [formControl]="stageName">
+      </label>
+    </p>
+    <p>
+      <label title="Описание">Описание:
+        <textarea [formControl]="stageDescription"></textarea>
+      </label>
+    </p>
+
+    <p>
+      <button type="submit">Создать</button>
+    </p>
+
+
+  </form>
+</div>

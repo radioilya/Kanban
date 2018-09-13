@@ -8,6 +8,7 @@ import {TaskComponent} from './task/task.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import {HttpClientModule} from '@angular/common/http';
+import { CreateStageComponent } from './create-stage/create-stage.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
     BoardComponent,
     StageComponent,
     TaskComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateStageComponent
   ],
   imports: [
     BrowserModule,
