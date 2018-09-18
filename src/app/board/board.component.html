@@ -1,10 +1,9 @@
-
 <div class="board">
 <div *ngFor="let stage of stages; let i=index; let isLast=last; let isFirst=first;">
   <app-stage [moveEnabled]="!isLast"  [backEnabled]="!isFirst" (moveTask)="onMoveTask($event, i)" (downTask)="offMoveTask($event, i)" [stage]="stage"></app-stage>
 </div>
 </div>
 <div class="create">
-<app-create-task [stages]="stages" (newTask)="newTask($event)"></app-create-task>
-<app-create-stage ></app-create-stage>
+<app-create-task [stages]="stages"  (refrashStage)="refreshStage($event)"></app-create-task>
+<app-create-stage (refrashBoards)="refreshBoard($event)"></app-create-stage>
 </div>

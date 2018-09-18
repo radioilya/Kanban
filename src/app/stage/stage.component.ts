@@ -3,7 +3,7 @@ import {Stage} from '../model/stage';
 import {Task} from '../model/task';
 import {Subject, Subscription} from 'rxjs';
 import {repeatWhen} from 'rxjs/operators';
-import {SelectTaskService} from '../select-task.service';
+import {BackendTaskService} from "../backend-task.service";
 
 @Component({
   selector: 'app-stage',
@@ -24,7 +24,7 @@ export class StageComponent implements OnInit, OnDestroy {
   getTasksByStageSubscription: Subscription;
   refreshStage = new Subject();
 
-  constructor(private service: SelectTaskService) {
+  constructor(private service: BackendTaskService) {
 
   }
 

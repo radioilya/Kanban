@@ -7,7 +7,6 @@
 <div *ngFor="let task of stage.tasks">
   <app-task [moveEnabled]="moveEnabled"  [backEnabled]="backEnabled" (moveTask)="onTaskMoved($event)"  (downTask)="offMoveTask($event)" [task]="task"></app-task>
 </div>
-
   </div>
 <div>
 </div>

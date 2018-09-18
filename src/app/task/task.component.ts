@@ -15,7 +15,6 @@ export class TaskComponent implements OnInit {
   moveEnabled: boolean;
   @Input()
   backEnabled: boolean;
-
   @Output()
   moveTask: EventEmitter<Task> = new EventEmitter<Task>();
   @Output()

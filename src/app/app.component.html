@@ -1,2 +1,7 @@
 <h1> Это Канбан! </h1>
-<app-board></app-board>
+
+<div *ngFor="let board of boards;">
+{{board.name}}
+  <app-board (refrashBoardUp)="refreshBoard($event)"></app-board>
+
+</div>
