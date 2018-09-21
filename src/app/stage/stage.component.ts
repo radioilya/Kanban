@@ -33,10 +33,31 @@ export class StageComponent implements OnInit, OnDestroy {
       .getTasksByStage(this.stage.id)
       .pipe(repeatWhen(() => this.refreshStage))
       .subscribe((tasks: Task[]) => this.stage.tasks = tasks);
+
   }
 
   ngOnDestroy(): void {
     this.getTasksByStageSubscription.unsubscribe();
+  }
+  drop($event) {
+    $event.preventDefault();
+    const data = $event.dataTransfer.getData('text');
+    let target = $event.target;
+    const targetClassName = target.className;
+    while (target.className !== 'stage__dorop') {
+      target = target.parentNode;
+    }
+    target = target.querySelector('.tasks');
+    if (targetClassName === 'stage') {
+      alert('asd')
+      $event.target.parentNode.insertBefore(document.getElementById(data), $event.target);
+    } else {
+      target.appendChild(document.getElementById(data));
+    }
+
+  }
+  allowDrop($event) {
+    $event.preventDefault();
   }
 
   onTaskMoved($event: Task) {

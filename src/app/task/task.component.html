@@ -1,8 +1,7 @@
-<div class="task">
+<div draggable="true" (dragstart)="dragStart($event)"  id="{{task.id}}" class="task">
   Сделать: {{task.name}}, приоритет: {{task.priority}}
   <p>{{task.description}}</p>
-  <button *ngIf="moveEnabled" (click)="moveAhead()">Вперед</button>
-  <button *ngIf="backEnabled"  (click)="moveBack()">Назад</button>
+
 </div>
 
 

@@ -15,22 +15,14 @@ export class TaskComponent implements OnInit {
   moveEnabled: boolean;
   @Input()
   backEnabled: boolean;
-  @Output()
-  moveTask: EventEmitter<Task> = new EventEmitter<Task>();
-  @Output()
-  downTask: EventEmitter<Task> = new EventEmitter<Task>();
-
   constructor() {
   }
 
   ngOnInit() {
    }
 
-  moveAhead() {
-    this.moveTask.emit(this.task);
+  dragStart(event) {
+    event.dataTransfer.setData('text', event.target.id);
   }
-  moveBack() {
-    this.downTask.emit(this.task);
-   }
 
 }

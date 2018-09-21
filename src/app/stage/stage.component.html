@@ -1,12 +1,13 @@
+<div class="stage__dorop"  >
 <div class="name__stage">
   {{stage.name}}
 
 </div>
 
-  <div class="stage">
-<div *ngFor="let task of stage.tasks">
+  <div class="stage" (dragover)="allowDrop($event)" (drop)="drop($event)">
+<div *ngFor="let task of stage.tasks" >
   <app-task [moveEnabled]="moveEnabled"  [backEnabled]="backEnabled" (moveTask)="onTaskMoved($event)"  (downTask)="offMoveTask($event)" [task]="task"></app-task>
 </div>
   </div>
-<div>
+
 </div>
