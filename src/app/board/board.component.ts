@@ -25,19 +25,6 @@ export class BoardComponent implements OnInit {
   refreshStage($event): void {
       this.refreshStages.next();
   }
-  refreshBoard($event): void {
-    alert('12345');
-      this.refrashBoardUp.emit($event);
-  }
-
-
-
-  onMoveTask($event: Task, i: number) {
-    this.stages[i + 1].tasks.push($event);
-  }
-  offMoveTask($event: Task, i: number) {
-    this.stages[i - 1].tasks.push($event);
-  }
   ngOnInit() {
     this.getStagesSubscription=this.serviceStage
       .getStages()

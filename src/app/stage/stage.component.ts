@@ -13,6 +13,7 @@ import {BackendTaskService} from "../backend-task.service";
 export class StageComponent implements OnInit, OnDestroy {
   @Input()
   stage: Stage;
+
   @Input()
   moveEnabled: boolean;
   @Input()
@@ -23,7 +24,7 @@ export class StageComponent implements OnInit, OnDestroy {
   downTask: EventEmitter<Task> = new EventEmitter<Task>();
   getTasksByStageSubscription: Subscription;
   refreshStage = new Subject();
-
+  taskOne: Task;
   constructor(private service: BackendTaskService) {
 
   }
@@ -33,6 +34,8 @@ export class StageComponent implements OnInit, OnDestroy {
       .getTasksByStage(this.stage.id)
       .pipe(repeatWhen(() => this.refreshStage))
       .subscribe((tasks: Task[]) => this.stage.tasks = tasks);
+
+
 
   }
 
@@ -49,9 +52,17 @@ export class StageComponent implements OnInit, OnDestroy {
     }
     target = target.querySelector('.tasks');
     if (targetClassName === 'stage') {
-      alert('asd')
-      $event.target.parentNode.insertBefore(document.getElementById(data), $event.target);
-    } else {
+     const getTasksSubscription =this.service
+       .getTasksByOne(data).subscribe(task=> {
+         this.taskOne=task;
+         this.taskOne.stageId = $event.target.parentNode.id;
+         const updateTasksSubscription = this.service.updateTasksService(this.taskOne)
+           .subscribe(() => updateTasksSubscription.unsubscribe());
+         getTasksSubscription.unsubscribe();
+         $event.target.parentNode.insertBefore(document.getElementById(data), $event.target);
+
+       });
+      } else {
       target.appendChild(document.getElementById(data));
     }
 
@@ -60,12 +71,5 @@ export class StageComponent implements OnInit, OnDestroy {
     $event.preventDefault();
   }
 
-  onTaskMoved($event: Task) {
-    this.stage.tasks = this.stage.tasks.filter(value => value !== $event);
-    this.moveTask.emit($event);
-  }
-  offMoveTask($event: Task) {
-    this.stage.tasks = this.stage.tasks.filter(value => value !== $event);
-    this.downTask.emit($event);
-    }
+
 }

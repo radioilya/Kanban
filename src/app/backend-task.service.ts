@@ -19,4 +19,10 @@ export class BackendTaskService {
   getTasksByStage(stageId: number): Observable<Task[]> {
     return this.http.get<Task[]>(`${this.url}stages/${stageId}/tasks`);
 }
+  getTasksByOne(taskId: number): Observable<Task> {
+    return this.http.get<Task>(`${this.url}/tasks/${taskId}`);
+  }
+  updateTasksService(task: Task): Observable<Task> {
+    return this.http.put<Task>(this.url + 'tasks/' + task.id, task);
+  }
 }
