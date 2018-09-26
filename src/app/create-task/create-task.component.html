@@ -1,35 +1,34 @@
 <div class="form">
+  Новая Задача
 <form (submit)='createTask()'>
   <p>
-    <label title="Стадии">Стадии:
-      <select [formControl]="taskParent_id" >
+    <mat-form-field >
+      <mat-select placeholder="Стадии" [formControl]="taskParent_id" >
 
-      <option *ngFor="let stage of stages;" value="{{stage.id}}">{{stage.name}}</option>
-    </select>
-    </label>
+      <mat-option *ngFor="let stage of stages;" value="{{stage.id}}">{{stage.name}}</mat-option>
+    </mat-select>
+    </mat-form-field>
   </p>
-  <label title="Приоритет">Приоритет:
-  <select [formControl]="taskPriority">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-  </select>
-  </label>
+  Приоритет:
+
+    <mat-slider  thumbLabel [displayWith]="formatLabel" min="1" max="100" tickInterval="1" value="1" [formControl]="taskPriority"></mat-slider>
+
+
 
   <p>
-    <label title="Название задачи">Новая Задача:
-      <input [formControl]="taskName">
-    </label>
+    <mat-form-field>
+      <input  placeholder="Имя" matInput [formControl]="taskName">
+    </mat-form-field>
   </p>
   <p>
-    <label title="Описание">Описание:
-      <textarea [formControl]="taskDescription"></textarea>
-    </label>
+    <mat-form-field title="Описание">Описание:
+      <textarea placeholder="Описание" matInput [formControl]="taskDescription"></textarea>
+    </mat-form-field>
   </p>
 
   <p>
-    <button type="submit">Создать</button>
+  <button mat-stroked-button  type="submit">Создать</button>
+
   </p>
 
 

@@ -24,7 +24,17 @@ export class CreateTaskComponent implements OnInit {
     this.taskPriority = new FormControl('4');
     this.taskParent_id = new FormControl('1');
   }
+  formatLabel(value: number | null) {
+    if (!value) {
+      return 0;
+    }
 
+    if (value >= 100) {
+      return Math.round(value / 100) + 'k';
+    }
+
+    return value;
+  }
   ngOnInit() {
   }
 

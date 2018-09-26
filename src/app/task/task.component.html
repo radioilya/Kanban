@@ -1,7 +1,13 @@
-<div draggable="true" (dragstart)="dragStart($event)"  id="{{task.id}}" class="task">
-  Сделать: {{task.name}}, приоритет: {{task.priority}}
-  <p>{{task.description}}</p>
-
-</div>
+<mat-card class="example-card task" draggable="true" (dragstart)="dragStart($event)"  id="{{task.id}}" >
+  <mat-card-header>
+    <mat-card-title>{{task.name}}</mat-card-title>
+    <mat-card-subtitle>{{task.priority}}</mat-card-subtitle>
+    <mat-card-content>
+    <p>
+      {{task.description}}
+      </p>
+    </mat-card-content>
+</mat-card-header>
+</mat-card>
 
 

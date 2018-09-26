@@ -10,10 +10,10 @@ import {BackendStageService} from '../backend-stage.service';
 })
 export class CreateStageComponent implements OnInit {
   @Input()  stages: Stage;
+  @Input()  StageParent_id: number;
   @Output()  refrashBoards: EventEmitter<number> = new EventEmitter<number>();
   stageName: FormControl;
   stageDescription: FormControl;
-  StageParent_id=1;
   constructor( private service: BackendStageService) {
     this.stageName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]);
     this.stageDescription = new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]);
@@ -26,11 +26,11 @@ export class CreateStageComponent implements OnInit {
   createStage() {
     if (this.stageName.valid && this.stageDescription.valid) {
 
-      const stage= new Stage(this.stageName.value, this.stageDescription.value, 1);
+      const stage= new Stage(this.stageName.value, this.stageDescription.value, this.StageParent_id);
       const newStageSubscription = this.service
         .addStageService(stage)
         .subscribe(() => {
-          this.refrashBoards.emit(this.StageParent_id);
+          this.refrashBoards.emit();
           newStageSubscription.unsubscribe();
         });
       this.stageName.reset('');

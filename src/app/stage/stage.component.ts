@@ -65,7 +65,6 @@ export class StageComponent implements OnInit, OnDestroy {
       } else {
       target.appendChild(document.getElementById(data));
     }
-
   }
   allowDrop($event) {
     $event.preventDefault();
