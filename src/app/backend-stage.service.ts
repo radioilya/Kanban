@@ -17,8 +17,8 @@ export class BackendStageService {
   getStages(): Observable<Stage[]> {
     return this.http.get<Stage[]>(this.url + 'stages');
   }
-  getStagesOne(stageId): Observable<Stage[]> {
+  /*getStagesOne(stageId): Observable<Stage[]> {
     return this.http.get<Stage[]>(`${this.url}/stages/${stageId}`);
-  }
+  }*/
 }
 

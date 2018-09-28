@@ -7,7 +7,10 @@
   border-radius: 10px 10px 10px 10px;
   width: auto;
   background: bisque;
-  height: 100px;
+  height: auto;
   margin-top: 10px;
   max-width: 400px;
+}
+.mat-card-header{
+  flex-direction: column;
 }

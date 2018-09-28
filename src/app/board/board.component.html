@@ -1,9 +1,11 @@
+<div class="create">
+  <app-create-task [stages]="stages"  (refrashStage)="refreshStage($event)"></app-create-task>
+  <app-create-stage [StageParent_id]="boardId"  (refrashBoards)="refreshBoard()"></app-create-stage>
+  <app-create-board (refrashBoards)="refreshBoard()"></app-create-board>
+</div>
 <div class="board mat-app-background">
 <div *ngFor="let stage of stages; let i=index; let isLast=last; let isFirst=first;">
   <app-stage  [stage]="stage"></app-stage>
 </div>
 </div>
-<div class="create">
-<app-create-task [stages]="stages"  (refrashStage)="refreshStage($event)"></app-create-task>
-<app-create-stage [StageParent_id]="boardId"  (refrashBoards)="refreshBoard()"></app-create-stage>
-</div>
+

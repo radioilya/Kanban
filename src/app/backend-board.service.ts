@@ -9,10 +9,9 @@ export class BackendBoardService {
   url = 'http://localhost:8080/';
 
   constructor(private http: HttpClient) { }
-  /*addStageService(stage: Board) {
-    return this.http.post<Board>(this.url + 'board', board);
-
-  }*/
+  addBoardservice(board: Board) {
+    return this.http.post<Board>(this.url + 'boards', board);
+  }
   getBoards(): Observable<Board[]> {
     return this.http.get<Board[]>(this.url + 'boards');
   }

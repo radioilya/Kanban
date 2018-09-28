@@ -25,9 +25,8 @@ export class AppComponent  implements OnInit{
   constructor(private serviceBoard: BackendBoardService) {
 
   }
-  refreshBoard($event): void {
-    alert('123');
-    this.refreshBoards.next();
+  refreshBoard(): void {
+   this.refreshBoards.next();
   }
   ngOnInit() {
     this.getBoardsSubscription=this.serviceBoard

@@ -26,6 +26,9 @@ export class BoardComponent implements OnInit {
   refreshStage(): void {
       this.refreshStages.next();
   }
+  refreshBoard(): void {
+    this.refrashBoardUp.emit();
+  }
   ngOnInit() {
     this.getStagesSubscription=this.serviceStage
       .getStages()

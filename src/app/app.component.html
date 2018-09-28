@@ -1,8 +1,10 @@
+<div class="head">
 <h1> Это Канбан! </h1>
 <mat-tab-group>
 <div *ngFor="let board of boards;">
   <mat-tab label="{{board.name}}">
-  <app-board [boardId]="board.id" (refrashBoardUp)="refreshBoard($event)"></app-board>
+  <app-board [boardId]="board.id" (refrashBoardUp)="refreshBoard()"></app-board>
   </mat-tab>
 </div>
 </mat-tab-group>
+  </div>

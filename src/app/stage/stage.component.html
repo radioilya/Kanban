@@ -6,7 +6,7 @@
 
   <div class="stage" (dragover)="allowDrop($event)" (drop)="drop($event)" >
 <div *ngFor="let task of stage.tasks" >
-  <app-task [task]="task"></app-task>
+  <app-task [task]="task" taskUp (taskUp)="uptadeTask($event)"></app-task>
 </div>
   </div>
 

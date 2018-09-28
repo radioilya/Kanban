@@ -1,5 +1,10 @@
-<div class="form">
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
   Новая Задача
+        </mat-panel-title>
+      </mat-expansion-panel-header>
 <form (submit)='createTask()'>
   <p>
     <mat-form-field >
@@ -9,10 +14,10 @@
     </mat-select>
     </mat-form-field>
   </p>
-  Приоритет:
 
-    <mat-slider  thumbLabel [displayWith]="formatLabel" min="1" max="100" tickInterval="1" value="1" [formControl]="taskPriority"></mat-slider>
-
+  Приоритет:<p>
+    <mat-slider   thumbLabel [displayWith]="formatLabel" min="1" max="100" tickInterval="1" value="1" [formControl]="taskPriority"></mat-slider>
+</p>
 
 
   <p>
@@ -21,7 +26,7 @@
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field title="Описание">Описание:
+    <mat-form-field>
       <textarea placeholder="Описание" matInput [formControl]="taskDescription"></textarea>
     </mat-form-field>
   </p>
@@ -33,4 +38,6 @@
 
 
 </form>
-</div>
+  </mat-expansion-panel>
+    </mat-accordion>
+

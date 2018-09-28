@@ -14,10 +14,10 @@ export class CreateStageComponent implements OnInit {
   @Output()  refrashBoards: EventEmitter<number> = new EventEmitter<number>();
   stageName: FormControl;
   stageDescription: FormControl;
-  constructor( private service: BackendStageService) {
+    constructor( private service: BackendStageService) {
     this.stageName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]);
     this.stageDescription = new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]);
-  }
+ }
 
   ngOnInit() {
 

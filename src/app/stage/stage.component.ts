@@ -69,6 +69,11 @@ export class StageComponent implements OnInit, OnDestroy {
   allowDrop($event) {
     $event.preventDefault();
   }
+  uptadeTask($event) {
 
+    console.log($event);
+    const updateTasksSubscription = this.service.updateTasksService($event)
+      .subscribe(() => updateTasksSubscription.unsubscribe());
 
+  }
 }

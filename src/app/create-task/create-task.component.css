@@ -7,4 +7,8 @@ background: #ffffff;
   flex-direction: column;
   padding: 30px;
 }
+mat-slider{
+  height: 30px;
+  min-width: 185px;
+}
 
