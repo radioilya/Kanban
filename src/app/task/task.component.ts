@@ -56,7 +56,7 @@ export class TaskComponent implements OnInit {
     taskParent_id: FormControl;
   constructor(
     public taskEditing:MatDialogRef<editTask>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: Task) {
     this.taskName = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]);
     this.taskDescription = new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]);
     this.taskPriority = new FormControl();
